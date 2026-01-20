@@ -1,13 +1,27 @@
+const CACHE_NAME = "mayor-sim-v2"; // change version when you update
+
 self.addEventListener("install", e => {
   e.waitUntil(
-    caches.open("mayor-sim").then(cache => {
-      return cache.addAll([
+    caches.open(CACHE_NAME).then(cache =>
+      cache.addAll([
         "./",
         "./index.html",
         "./style.css",
-        "./game.js"
-      ]);
-    })
+        "./core/game.js",
+        "./core/map.js"
+      ])
+    )
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.map(k => (k !== CACHE_NAME ? caches.delete(k) : null))
+      )
+    )
   );
 });
 

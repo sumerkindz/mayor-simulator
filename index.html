@@ -1,29 +1,15 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mayor Simulator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mayor Simulator</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🏙️ Mayor Simulator</h1>
 
-  <div id="stats">
-    💰 Uang: <span id="money"></span><br>
-    👥 Penduduk: <span id="population"></span><br>
-    😊 Bahagia: <span id="happiness"></span>
-  </div>
+<canvas id="game"></canvas>
 
-  <button onclick="buildHouse()">Bangun Rumah (-100)</button>
-  <button onclick="nextDay()">Next Day</button>
-
-  <script src="game.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
+<script type="module" src="core/game.js"></script>
 </body>
 </html>
